@@ -1,0 +1,51 @@
+
+# input both function as same sign to execute while loop
+
+y_a = -1
+y_b = -1
+
+# Compare the signs of f(a) with f(b)
+while ((y_a < 0) and (y_b < 0)) or ((y_a > 0) and (y_b > 0)): # while f(a) and f(b) are either both negative or positive
+    print("f(a) and f(b) have same signs. Enter the correct range again.")
+
+    # Ask the lower and upper range to search in that fixed range
+    a = int(input("Enter lower limit 'a': "))
+    b = int(input("Enter upper limit 'b': "))
+
+    # For calculating f(a)
+    x = a
+    y_a = (x ** 3 - x - 2)
+    print("f({}) = {}".format(a, y_a))
+
+    # For calculating f(b)
+    x = b
+    y_b = (x ** 3 - x - 2)
+    print("f({}) = {}".format(b, y_b))
+
+# If the signs are different execute below block
+else:
+    print('''
+        f(a) = f({0}) = {1:3} and
+        f(b) = f({2}) = {3:3} have opposite signs.
+
+        So the root of the function must be within the interval [{0}, {2}]
+          '''.format(a, y_a, b, y_b))
+
+iteration = int(input(" Enter the number of iteration you want(> 0): "))
+# Title
+print("iteration     an              bn          cn          fn       ")
+for i in range(1, iteration + 1):
+    # Bisect
+    c = (a + b) / 2
+    x = c
+    y_c = (x ** 3 - x - 2)
+
+    print("     {:<2}    {:<7.7f}     {:<7.7f}    {:<7.7f}    {:<7.7f}".format(i, a, b, c, y_c))
+
+# Check if the midpoint c falls on the right of a or right of b
+    if y_c < 0:
+        a = c
+    else:
+        b = c
+
+print("the root of function is {:4.3f}. ".format(c))
