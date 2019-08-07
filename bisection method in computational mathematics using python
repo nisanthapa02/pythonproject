@@ -1,4 +1,5 @@
-
+a = 0
+b = 0
 # input both function as same sign to execute while loop
 
 y_a = -1
